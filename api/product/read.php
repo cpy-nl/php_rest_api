@@ -39,10 +39,17 @@ if ($num > 0) {
     }
 
     // set repsonse code: 200 OK
-    http_repsonse_code(200);
+    http_response_code(200);
 
     // show products data in json format
     echo json_encode($products_arr);
-}
+} else {
+    // no products found?
+    http_response_code(404);
 
-// no products found?
+    // show message
+    echo json_encode(
+        array("message" => "No products found.")
+    );
+
+}
